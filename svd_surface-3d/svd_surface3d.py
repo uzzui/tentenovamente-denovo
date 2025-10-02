@@ -9,7 +9,7 @@ import os
 n = 7
 N = 14444
 lim = 0.5
-cmap_lista = ['gray', 'turbo', 'cividis', 'bone']
+cmap_lista = ['gray']
 NUM_IMAGENS = 10
 
 #DIR
@@ -48,9 +48,9 @@ for k_iter in range(NUM_IMAGENS):
     #RANDOM MATRIX
     M = np.random.randn(n, n)
     U, S, VT = svd(M)
-    pts_r = U @ pts_embutidos
-    pts_qr = VT @ pts_embutidos
-    conjuntos = [pts_qr[:3]]
+    pts_u = U @ pts_embutidos
+    pts_vt = VT @ pts_embutidos
+    conjuntos = [pts_vt[:3]] # aqui dá pra mudar pra pegar mais matrizes de transformação
 
     #PLOT
     fig = plt.figure(figsize=(10, 10))
@@ -99,4 +99,5 @@ for k_iter in range(NUM_IMAGENS):
     plt.close(fig)
 
     print(f"[{k_iter + 1}/{NUM_IMAGENS}]: {filename}")
+
 
